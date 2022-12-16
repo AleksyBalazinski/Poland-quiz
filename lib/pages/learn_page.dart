@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:poland_quiz/poland_map.dart';
 
 class LearnPage extends StatelessWidget {
   const LearnPage({super.key});
@@ -10,7 +11,8 @@ class LearnPage extends StatelessWidget {
         title: const Text('Learn page'),
       ),
       body: const Center(
-        child: Text('map of Poland goes here'),
+        //child: Text('map of Poland goes here'),
+        child: PolandMap(),
       ),
     );
   }
