@@ -1,5 +1,6 @@
 import 'dart:convert' show jsonDecode;
 import 'package:flutter/services.dart';
+import 'package:proj4dart/proj4dart.dart';
 
 class GeoJson {
   final String type;
@@ -72,12 +73,14 @@ class CoordinateList {
 }
 
 class Coordinates {
-  final List<double> coordinates;
+  final Point coordinates;
 
   Coordinates({required this.coordinates});
 
   factory Coordinates.fromJson(List<dynamic> json) {
-    return Coordinates(coordinates: json.map((e) => e as double).toList());
+    return Coordinates(
+      coordinates: Point.fromArray(json.map((e) => e as double).toList()),
+    );
   }
 }
 
