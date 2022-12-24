@@ -1,0 +1,114 @@
+{
+    "dolnośląskie": {
+        "area": 19947,
+        "population": 2898,
+        "voivode_seat": "Wrocław",
+        "sejmik_seat": "Wrocław",
+        "other_cities": []
+    },
+    "kujawsko-pomorskie": {
+        "area": 17972,
+        "population": 2069,
+        "voivode_seat": "Bydgoszcz",
+        "sejmik_seat": "Toruń",
+        "other_cities": []
+    },
+    "lubelskie": {
+        "area": 25122,
+        "population": 2103,
+        "voivode_seat": "Lublin",
+        "sejmik_seat": "Lublin",
+        "other_cities": []
+    },
+    "lubuskie": {
+        "area": 13988,
+        "population": 1010,
+        "voivode_seat": "Gorzów Wielkopolski",
+        "sejmik_seat": "Zielona Góra",
+        "other_cities": []
+    },
+    "łódzkie": {
+        "area": 18219,
+        "population": 2448,
+        "voivode_seat": "Łódź",
+        "sejmik_seat": "Łódź",
+        "other_cities": []
+    },
+    "małopolskie": {
+        "area": 15183,
+        "population": 3413,
+        "voivode_seat": "Kraków",
+        "sejmik_seat": "Kraków",
+        "other_cities": []
+    },
+    "mazowieckie": {
+        "area": 35558,
+        "population": 5428,
+        "voivode_seat": "Warszawa",
+        "sejmik_seat": "Warszawa",
+        "other_cities": []
+    },
+    "opolskie": {
+        "area": 9412,
+        "population": 980,
+        "voivode_seat": "Opole",
+        "sejmik_seat": "Opole",
+        "other_cities": []
+    },
+    "podkarpackie": {
+        "area": 17846,
+        "population": 2125,
+        "voivode_seat": "Rzeszów",
+        "sejmik_seat": "Rzeszów",
+        "other_cities": []
+    },
+    "podlaskie": {
+        "area": 20187,
+        "population": 1176,
+        "voivode_seat": "Białystok",
+        "sejmik_seat": "Białystok",
+        "other_cities": []
+    },
+    "pomorskie": {
+        "area": 18321,
+        "population": 2346,
+        "voivode_seat": "Gdańsk",
+        "sejmik_seat": "Gdańsk",
+        "other_cities": []
+    },
+    "śląskie": {
+        "area": 12333,
+        "population": 4508,
+        "voivode_seat": "Katowice",
+        "sejmik_seat": "Katowice",
+        "other_cities": []
+    },
+    "świętokrzyskie": {
+        "area": 11711,
+        "population": 1230,
+        "voivode_seat": "Kielce",
+        "sejmik_seat": "Kielce",
+        "other_cities": []
+    },
+    "warmińsko-mazurskie": {
+        "area": 24173,
+        "population": 1420,
+        "voivode_seat": "Olsztyn",
+        "sejmik_seat": "Olsztyn",
+        "other_cities": []
+    },
+    "wielkopolskie": {
+        "area": 29826,
+        "population": 3500,
+        "voivode_seat": "Poznań",
+        "sejmik_seat": "Poznań",
+        "other_cities": []
+    },
+    "zachodniopomorskie": {
+        "area": 22897,
+        "population": 1693,
+        "voivode_seat": "Szczecin",
+        "sejmik_seat": "Szczecin",
+        "other_cities": []
+    }
+}

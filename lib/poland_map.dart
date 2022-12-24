@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:poland_quiz/decoration.dart';
 import 'package:poland_quiz/polygon_painter.dart';
 import 'package:poland_quiz/geojson.dart';
 import 'package:proj4dart/proj4dart.dart';
@@ -80,22 +81,7 @@ class _PolandMapState extends State<PolandMap> {
       margin: const EdgeInsets.all(margin),
       width: width,
       height: height,
-      decoration: BoxDecoration(
-        color: Colors.blue.shade200,
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(cornerRadius),
-          topRight: Radius.circular(cornerRadius),
-          bottomLeft: Radius.circular(cornerRadius),
-          bottomRight: Radius.circular(cornerRadius),
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 5,
-            blurRadius: 7,
-          ),
-        ],
-      ),
+      decoration: getDecoration(),
       child: InteractiveViewer(
         child: Stack(
           children: <Widget>[

@@ -127,7 +127,7 @@ class Properties {
   }
 }
 
-Future<GeoJson> loadJson(String path) async {
+Future<GeoJson> loadGeoJson(String path) async {
   String data = await rootBundle.loadString(path);
   Map<String, dynamic> parsedJson = jsonDecode(data);
   return GeoJson.fromJson(parsedJson);
