@@ -6,8 +6,9 @@ import 'package:poland_quiz/geojson.dart';
 import 'package:proj4dart/proj4dart.dart';
 
 class PolandMap extends StatefulWidget {
-  const PolandMap({super.key, required this.data});
+  const PolandMap({super.key, required this.data, required this.onSelection});
   final GeoJson data;
+  final Function(String) onSelection;
 
   @override
   State<PolandMap> createState() => _PolandMapState();
@@ -103,8 +104,7 @@ class _PolandMapState extends State<PolandMap> {
                 var geometry = feature.geometry;
                 var properties = feature.properties;
 
-                Polygon polygon = Polygon(geometry
-                    .coordiateLists[0].coordinateList
+                var polygon = Polygon(geometry.coordiateLists[0].coordinateList
                     .map((c) => tuple.forward(c.coordinates))
                     .map((p) =>
                         toScreenCoordinates(p, minLong.x, maxLat.y, scale))
@@ -117,6 +117,7 @@ class _PolandMapState extends State<PolandMap> {
                     print(properties.name1);
                     selectedVoivodeship = properties.name1;
                     setState(() {});
+                    widget.onSelection(properties.name1);
                   },
                   polygon: polygon,
                   isSelected: selectedVoivodeship == properties.name1,

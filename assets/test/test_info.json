@@ -1,0 +1,29 @@
+{
+    "test1": {
+        "area": 123,
+        "population": 1234,
+        "voivode_seat": "CapitalV",
+        "sejmik_seat": "CapitalS",
+        "other_cities": [
+            "Other City 11",
+            "Other City 12"
+        ]
+    },
+    "test2": {
+        "area": 321,
+        "population": 4321,
+        "voivode_seat": "Capital2",
+        "sejmik_seat": "Capital2",
+        "other_cities": [
+            "Other City 21",
+            "Other City 22"
+        ]
+    },
+    "test3": {
+        "area": 0,
+        "population": 0,
+        "voivode_seat": "Capital3",
+        "sejmik_seat": "Capital3",
+        "other_cities": []
+    }
+}
