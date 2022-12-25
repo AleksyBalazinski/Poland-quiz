@@ -60,7 +60,6 @@ class _PolandMapState extends State<PolandMap> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = 300;
-    const double cornerRadius = 10;
     const double margin = 20;
     double canvasWidth = width - 2 * margin;
     double canvasHeight = height;
