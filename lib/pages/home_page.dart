@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
     return [
       const DashboardPage(),
       LearnPage(geoJson: geoJson, infoJson: infoJson),
-      const QuizPage()
+      QuizPage(geoJson: geoJson, infoJson: infoJson)
     ];
   }
 

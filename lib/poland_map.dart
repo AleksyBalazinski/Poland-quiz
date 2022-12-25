@@ -7,9 +7,14 @@ import 'package:poland_quiz/geojson.dart';
 import 'package:proj4dart/proj4dart.dart';
 
 class PolandMap extends StatefulWidget {
-  const PolandMap({super.key, required this.data, required this.onSelection});
+  const PolandMap(
+      {super.key,
+      required this.data,
+      required this.onSelection,
+      this.intialSelection});
   final GeoJson data;
   final Function(String) onSelection;
+  final String? intialSelection;
 
   @override
   State<PolandMap> createState() => _PolandMapState();
@@ -105,7 +110,10 @@ class _PolandMapState extends State<PolandMap> {
                     widget.onSelection(properties.name1);
                   },
                   polygon: polygon,
-                  isSelected: selectedVoivodeship == properties.name1,
+                  isSelected: widget.intialSelection != null
+                      ? widget.intialSelection!.toLowerCase() ==
+                          properties.name1.toLowerCase()
+                      : selectedVoivodeship == properties.name1,
                 );
               }()
           ],
