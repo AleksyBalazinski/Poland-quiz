@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:poland_quiz/decoration.dart';
 import 'package:poland_quiz/geojson.dart';
 import 'package:poland_quiz/infojson.dart';
 import 'package:poland_quiz/poland_map.dart';
@@ -63,7 +64,8 @@ class _VoivodeshipOnMapQuizState extends State<VoivodeshipOnMapQuiz> {
   late List<String> answerPool;
   late String expectedAnswer;
   final Random _random = Random();
-  bool isAnswerCorrect = false;
+  int _pointsCount = 0;
+  int _hp = 3;
 
   void _setSelectedVoivodeship(String selected) {
     // no op
@@ -71,14 +73,29 @@ class _VoivodeshipOnMapQuizState extends State<VoivodeshipOnMapQuiz> {
 
   void _checkAnswer() {
     if (userAnswer == expectedAnswer) {
+      _pointsCount++;
       print("OK");
-      isAnswerCorrect = true;
-      expectedAnswer = _getNewExpectedAnswer();
-      answerPool = _getAnswerPool();
     } else {
+      _hp--;
       print("not OK");
-      isAnswerCorrect = false;
+      if (_hp == 0) {
+        print('game over!');
+      }
     }
+  }
+
+  void _advanceToNextQuestion() {
+    setState(() => userAnswer = null);
+    expectedAnswer = _getNewExpectedAnswer();
+    answerPool = _getAnswerPool();
+  }
+
+  void _restart() {
+    setState(() {
+      _pointsCount = 0;
+      _hp = 3;
+    });
+    _advanceToNextQuestion();
   }
 
   String _getNewExpectedAnswer() {
@@ -106,8 +123,7 @@ class _VoivodeshipOnMapQuizState extends State<VoivodeshipOnMapQuiz> {
     super.initState();
 
     voivodeships = widget.info.voivodeships.keys.toList();
-    expectedAnswer = _getNewExpectedAnswer();
-    answerPool = _getAnswerPool();
+    _advanceToNextQuestion();
   }
 
   @override
@@ -115,6 +131,7 @@ class _VoivodeshipOnMapQuizState extends State<VoivodeshipOnMapQuiz> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Voivodeship on the map'),
+        centerTitle: true,
         leading: InkWell(
           onTap: () => Navigator.pop(context),
           child: const Icon(Icons.arrow_back_ios),
@@ -122,39 +139,96 @@ class _VoivodeshipOnMapQuizState extends State<VoivodeshipOnMapQuiz> {
       ),
       body: Column(
         children: [
+          Container(
+            margin: const EdgeInsets.all(20),
+            decoration: getDecoration(),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(
+                  'Points: $_pointsCount',
+                  style: const TextStyle(fontSize: 20),
+                ),
+                Row(
+                  children: [
+                    for (int i = 0; i < _hp; i++)
+                      const Icon(
+                        Icons.favorite,
+                        color: Colors.red,
+                      )
+                  ],
+                )
+              ],
+            ),
+          ),
           PolandMap(
             data: widget.data,
             onSelection: _setSelectedVoivodeship,
             intialSelection: expectedAnswer,
           ),
-          Row(
+          Wrap(
+            spacing: 20,
+            runSpacing: 10,
             children: [
               for (var ans in answerPool)
                 ElevatedButton(
-                  onPressed: () {
-                    setState(() => userAnswer = ans);
-                    _checkAnswer();
-                  },
+                  onPressed: userAnswer == null
+                      ? () {
+                          setState(() {
+                            userAnswer = ans;
+                          });
+                          _checkAnswer();
+                        }
+                      : null,
                   child: Text(ans),
                 )
             ],
           ),
-          getFeedback(userAnswer != null, isAnswerCorrect)
+          getFeedback(
+            userAnswer != null,
+            userAnswer == expectedAnswer,
+            _advanceToNextQuestion,
+            _hp == 0,
+            _restart,
+          ),
         ],
       ),
     );
   }
 }
 
-Widget getFeedback(bool anyAnswer, bool answeredCorrectly) {
+Widget getFeedback(bool anyAnswer, bool answeredCorrectly,
+    Function() callbackContinue, bool gameOver, Function() callbackTryAgain) {
+  if (gameOver) {
+    return GameOverInfo(onPressed: callbackTryAgain);
+  }
+
   if (!anyAnswer) {
     return const EmptyInfo();
   }
 
   if (answeredCorrectly) {
-    return const CorrectAnswerInfo();
+    return CorrectAnswerInfo(onPressed: callbackContinue);
   } else {
-    return const WrongAnswerInfo();
+    return WrongAnswerInfo(onPressed: callbackContinue);
+  }
+}
+
+class GameOverInfo extends StatelessWidget {
+  const GameOverInfo({super.key, required this.onPressed});
+  final Function() onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        const Text('Game over!'),
+        ElevatedButton(
+          onPressed: onPressed,
+          child: const Text('try again'),
+        ),
+      ],
+    );
   }
 }
 
@@ -168,26 +242,48 @@ class EmptyInfo extends StatelessWidget {
 }
 
 class WrongAnswerInfo extends StatelessWidget {
-  const WrongAnswerInfo({super.key});
+  const WrongAnswerInfo({super.key, required this.onPressed});
+  final Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: const Center(
-        child: Text('Wrong answer'),
+      margin: const EdgeInsets.all(20),
+      decoration: getDecoration(color: Colors.redAccent),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          const Text(
+            'Wrong answer',
+            style: TextStyle(fontSize: 20),
+          ),
+          ElevatedButton(
+            onPressed: onPressed,
+            child: const Text('continue'),
+          ),
+        ],
       ),
     );
   }
 }
 
 class CorrectAnswerInfo extends StatelessWidget {
-  const CorrectAnswerInfo({super.key});
+  const CorrectAnswerInfo({super.key, required this.onPressed});
+  final Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: const Center(
-        child: Text('Correct answer'),
+      margin: const EdgeInsets.all(20),
+      decoration: getDecoration(color: Colors.green),
+      child: Row(
+        children: [
+          const Text('Correct answer'),
+          ElevatedButton(
+            onPressed: onPressed,
+            child: const Text('continue'),
+          ),
+        ],
       ),
     );
   }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-BoxDecoration getDecoration() {
+BoxDecoration getDecoration({Color? color}) {
   const double cornerRadius = 10;
   return BoxDecoration(
-    color: Colors.blue.shade200,
+    color: color == null ? Colors.blue.shade200 : color,
     borderRadius: const BorderRadius.only(
       topLeft: Radius.circular(cornerRadius),
       topRight: Radius.circular(cornerRadius),
