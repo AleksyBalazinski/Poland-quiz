@@ -11,7 +11,7 @@ class PolygonPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     var paintFill = Paint()
-      ..color = fillColor // Colors.blueGrey
+      ..color = fillColor
       ..style = PaintingStyle.fill;
     var paintBorder = Paint()
       ..color = Colors.white

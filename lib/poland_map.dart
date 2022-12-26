@@ -17,10 +17,10 @@ class PolandMap extends StatefulWidget {
   final String? intialSelection;
 
   @override
-  State<PolandMap> createState() => _PolandMapState();
+  State<PolandMap> createState() => PolandMapState();
 }
 
-class _PolandMapState extends State<PolandMap> {
+class PolandMapState extends State<PolandMap> {
   String? selectedVoivodeship;
   late List<Feature> features;
   late Iterable<Coordinates> allCoordinates;
@@ -32,6 +32,10 @@ class _PolandMapState extends State<PolandMap> {
   late Point maxLong;
   late Point minLat;
   late Point maxLat;
+
+  void resetSelection() {
+    selectedVoivodeship = null;
+  }
 
   @override
   void initState() {
@@ -105,8 +109,9 @@ class _PolandMapState extends State<PolandMap> {
                   top: topOffset,
                   onTap: () {
                     print(properties.name1);
-                    selectedVoivodeship = properties.name1;
-                    setState(() {});
+                    setState(() {
+                      selectedVoivodeship = properties.name1;
+                    });
                     widget.onSelection(properties.name1);
                   },
                   polygon: polygon,
