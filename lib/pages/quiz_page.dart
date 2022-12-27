@@ -27,6 +27,7 @@ class QuizPage extends StatelessWidget {
                     info: infoJson,
                     initialHp: 3,
                     optionsCount: 4,
+                    level: 1, // TODO get from elsewhere
                   ),
                 ),
               );
@@ -41,6 +42,7 @@ class QuizPage extends StatelessWidget {
                     data: geoJson,
                     info: infoJson,
                     initalHp: 3,
+                    level: 1, // TODO get from elsewhere
                   ),
                 ),
               );

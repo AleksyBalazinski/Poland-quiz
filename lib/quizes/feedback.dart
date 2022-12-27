@@ -1,10 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:poland_quiz/decoration.dart';
 
-Widget getFeedback(bool anyAnswer, bool answeredCorrectly,
-    Function() callbackContinue, bool gameOver, Function() callbackTryAgain) {
+Widget getFeedback(
+    bool anyAnswer,
+    bool answeredCorrectly,
+    Function() callbackContinue,
+    bool gameOver,
+    Function() callbackTryAgain,
+    int nextLevel,
+    bool advanceToNextLevel) {
   if (gameOver) {
     return GameOverInfo(onPressed: callbackTryAgain);
+  }
+
+  if (advanceToNextLevel) {
+    return NextLevelInfo(
+      onPressed: callbackContinue,
+      level: nextLevel,
+    );
   }
 
   if (!anyAnswer) {
@@ -83,6 +96,30 @@ class CorrectAnswerInfo extends StatelessWidget {
       child: Row(
         children: [
           const Text('Correct answer'),
+          ElevatedButton(
+            onPressed: onPressed,
+            child: const Text('continue'),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class NextLevelInfo extends StatelessWidget {
+  const NextLevelInfo(
+      {super.key, required this.onPressed, required this.level});
+  final Function() onPressed;
+  final int level;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.all(20),
+      decoration: getDecoration(color: Colors.green),
+      child: Row(
+        children: [
+          Text('Unlocked level $level!'),
           ElevatedButton(
             onPressed: onPressed,
             child: const Text('continue'),
