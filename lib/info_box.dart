@@ -15,7 +15,7 @@ class InfoBox extends StatelessWidget {
       alignment: Alignment.center,
       margin: const EdgeInsets.all(margin),
       decoration: getDecoration(),
-      child: Row(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Center(

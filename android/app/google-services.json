@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "747009347671",
+    "project_id": "poland-quiz-62dae",
+    "storage_bucket": "poland-quiz-62dae.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:747009347671:android:24a0f0fbfaab90cbafd312",
+        "android_client_info": {
+          "package_name": "com.example.poland_quiz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "747009347671-2h6jfp8714bprgpk8ic68b03kduum7no.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQSWhX2Js0NbZZoINbE2Pxdfwe-79QiOQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "747009347671-2h6jfp8714bprgpk8ic68b03kduum7no.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
