@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:poland_quiz/pages/home_page.dart';
-
+import 'package:poland_quiz/pages/opening_view.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:poland_quiz/routes.dart';
 import 'firebase_options.dart';
 
 Future<void> main(List<String> args) async {
@@ -17,9 +17,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      routes: AppRoutes.define(),
       title: 'Demo',
-      home: HomePage(),
+      home: OpeningView(),
     );
   }
 }
