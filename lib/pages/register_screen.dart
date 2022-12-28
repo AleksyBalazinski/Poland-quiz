@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:poland_quiz/routes.dart';
 
+import 'package:firebase_auth/firebase_auth.dart';
+
 class Register extends StatefulWidget {
   const Register({super.key});
 
@@ -10,10 +12,10 @@ class Register extends StatefulWidget {
 
 class _RegisterState extends State<Register> {
   final _formKey = GlobalKey<FormState>();
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
-  TextEditingController _usernameController = TextEditingController();
-  TextEditingController _repasswordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _repasswordController = TextEditingController();
   bool isSubmitting = true; // TODO
 
   @override
@@ -28,10 +30,10 @@ class _RegisterState extends State<Register> {
     final usernameField = TextFormField(
       enabled: isSubmitting,
       controller: _usernameController,
-      style: TextStyle(
+      style: const TextStyle(
         color: Colors.black,
       ),
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         hintText: 'John Doe',
         labelText: 'username',
         hintStyle: TextStyle(
@@ -44,10 +46,10 @@ class _RegisterState extends State<Register> {
       enabled: isSubmitting,
       controller: _emailController,
       keyboardType: TextInputType.emailAddress,
-      style: TextStyle(
+      style: const TextStyle(
         color: Colors.black,
       ),
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         hintText: 'something@example.com',
         labelText: 'email',
         hintStyle: TextStyle(
@@ -59,10 +61,10 @@ class _RegisterState extends State<Register> {
     final passwordField = TextFormField(
       enabled: isSubmitting,
       controller: _passwordController,
-      style: TextStyle(
+      style: const TextStyle(
         color: Colors.black,
       ),
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         hintText: 'password',
         labelText: 'password',
         hintStyle: TextStyle(
@@ -74,10 +76,10 @@ class _RegisterState extends State<Register> {
     final repasswordField = TextFormField(
       enabled: isSubmitting,
       controller: _repasswordController,
-      style: TextStyle(
+      style: const TextStyle(
         color: Colors.black,
       ),
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         hintText: 'password',
         labelText: 'Re-enter password',
         hintStyle: TextStyle(
@@ -87,7 +89,7 @@ class _RegisterState extends State<Register> {
     );
 
     final fields = Padding(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -105,8 +107,8 @@ class _RegisterState extends State<Register> {
       color: Colors.white,
       child: MaterialButton(
         minWidth: mq.size.width / 1.2,
-        padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
-        child: Text(
+        padding: const EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
+        child: const Text(
           'Register',
           textAlign: TextAlign.center,
           style: TextStyle(
@@ -115,8 +117,27 @@ class _RegisterState extends State<Register> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        onPressed: () {
-          // TODO authenticate
+        onPressed: () async {
+          try {
+            var user =
+                (await FirebaseAuth.instance.createUserWithEmailAndPassword(
+              email: _emailController.text,
+              password: _passwordController.text,
+            ))
+                    .user;
+
+            if (user != null) {
+              // TODO add user data to db
+              if (!mounted) return;
+              Navigator.of(context).pushNamed(AppRoutes.homePage);
+            }
+          } catch (e) {
+            _usernameController.text = "";
+            _passwordController.text = "";
+            _repasswordController.text = "";
+            _emailController.text = "";
+            print(e);
+          }
         },
       ),
     );
@@ -126,18 +147,18 @@ class _RegisterState extends State<Register> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         loginButton,
-        Padding(
+        const Padding(
           padding: EdgeInsets.all(8),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('Already have an account?'),
+            const Text('Already have an account?'),
             MaterialButton(
               onPressed: () {
                 Navigator.of(context).pushNamed(AppRoutes.authLogin);
               },
-              child: Text('Login'),
+              child: const Text('Login'),
             ),
           ],
         )
@@ -148,7 +169,7 @@ class _RegisterState extends State<Register> {
       body: Form(
         key: _formKey,
         child: SingleChildScrollView(
-          padding: EdgeInsets.all(36),
+          padding: const EdgeInsets.all(36),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [

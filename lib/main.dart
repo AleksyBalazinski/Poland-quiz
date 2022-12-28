@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       routes: AppRoutes.define(),
       title: 'Demo',
-      home: OpeningView(),
+      home: const OpeningView(),
     );
   }
 }

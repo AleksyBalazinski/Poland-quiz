@@ -1,5 +1,3 @@
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 import 'package:poland_quiz/routes.dart';
 
@@ -21,8 +19,8 @@ class OpeningView extends StatelessWidget {
       color: Colors.white,
       child: MaterialButton(
         minWidth: mq.size.width / 1.2,
-        padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
-        child: Text(
+        padding: const EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
+        child: const Text(
           'Login',
           textAlign: TextAlign.center,
           style: TextStyle(
@@ -43,8 +41,8 @@ class OpeningView extends StatelessWidget {
       color: Colors.white,
       child: MaterialButton(
         minWidth: mq.size.width / 1.2,
-        padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
-        child: Text(
+        padding: const EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
+        child: const Text(
           'Register',
           textAlign: TextAlign.center,
           style: TextStyle(
@@ -65,7 +63,7 @@ class OpeningView extends StatelessWidget {
       children: [
         loginButton,
         Padding(
-          padding: EdgeInsets.fromLTRB(0, 15, 0, 70),
+          padding: const EdgeInsets.fromLTRB(0, 15, 0, 70),
           child: registerButton,
         ),
       ],
@@ -74,12 +72,12 @@ class OpeningView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: EdgeInsets.all(36),
+        padding: const EdgeInsets.all(36),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Padding(
-              padding: EdgeInsets.only(top: 50),
+              padding: const EdgeInsets.only(top: 50),
               child: logo,
             ),
             buttons,

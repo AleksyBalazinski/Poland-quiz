@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:poland_quiz/routes.dart';
+
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -12,8 +12,8 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
   bool isSubmitting = true; // TODO
 
   @override
@@ -29,10 +29,10 @@ class _LoginState extends State<Login> {
       enabled: isSubmitting,
       controller: _emailController,
       keyboardType: TextInputType.emailAddress,
-      style: TextStyle(
+      style: const TextStyle(
         color: Colors.black,
       ),
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         hintText: 'something@example.com',
         labelText: 'email',
         hintStyle: TextStyle(
@@ -46,10 +46,10 @@ class _LoginState extends State<Login> {
         TextFormField(
           enabled: isSubmitting,
           controller: _passwordController,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.black,
           ),
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             hintText: 'password',
             labelText: 'password',
             hintStyle: TextStyle(
@@ -57,7 +57,7 @@ class _LoginState extends State<Login> {
             ),
           ),
         ),
-        Padding(
+        const Padding(
           padding: EdgeInsets.all(2.0),
         ),
         Row(
@@ -67,7 +67,7 @@ class _LoginState extends State<Login> {
               onPressed: () {
                 // TODO fogot password popup
               },
-              child: Text("Forgot password"),
+              child: const Text("Forgot password"),
             )
           ],
         ),
@@ -75,7 +75,7 @@ class _LoginState extends State<Login> {
     );
 
     final fields = Padding(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -91,8 +91,8 @@ class _LoginState extends State<Login> {
       color: Colors.white,
       child: MaterialButton(
         minWidth: mq.size.width / 1.2,
-        padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
-        child: Text(
+        padding: const EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
+        child: const Text(
           'Login',
           textAlign: TextAlign.center,
           style: TextStyle(
@@ -101,8 +101,21 @@ class _LoginState extends State<Login> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        onPressed: () {
-          // TODO authenticate
+        onPressed: () async {
+          try {
+            var user = (await FirebaseAuth.instance.signInWithEmailAndPassword(
+              email: _emailController.text,
+              password: _passwordController.text,
+            ))
+                .user;
+
+            if (user != null) {
+              if (!mounted) return;
+              Navigator.of(context).pushNamed(AppRoutes.homePage);
+            }
+          } catch (e) {
+            print(e);
+          }
         },
       ),
     );
@@ -112,18 +125,18 @@ class _LoginState extends State<Login> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         loginButton,
-        Padding(
+        const Padding(
           padding: EdgeInsets.all(8),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('Not a member?'),
+            const Text('Not a member?'),
             MaterialButton(
               onPressed: () {
                 Navigator.of(context).pushNamed(AppRoutes.authRegister);
               },
-              child: Text('Sign up'),
+              child: const Text('Sign up'),
             ),
           ],
         )
@@ -134,7 +147,7 @@ class _LoginState extends State<Login> {
       body: Form(
         key: _formKey,
         child: SingleChildScrollView(
-          padding: EdgeInsets.all(36),
+          padding: const EdgeInsets.all(36),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
