@@ -13,14 +13,17 @@ class VoivodeshipOnMapQuiz extends StatefulWidget {
   final int initialHp;
   final int optionsCount;
   final int level;
+  final Function(int) nextLevelCallback;
 
-  const VoivodeshipOnMapQuiz(
-      {super.key,
-      required this.data,
-      required this.info,
-      required this.initialHp,
-      required this.optionsCount,
-      required this.level});
+  const VoivodeshipOnMapQuiz({
+    super.key,
+    required this.data,
+    required this.info,
+    required this.initialHp,
+    required this.optionsCount,
+    required this.level,
+    required this.nextLevelCallback,
+  });
 
   @override
   State<VoivodeshipOnMapQuiz> createState() => _VoivodeshipOnMapQuizState();
@@ -143,6 +146,7 @@ class _VoivodeshipOnMapQuizState extends State<VoivodeshipOnMapQuiz> {
                     level++;
                     questionsCount = level * questionsPerLevel;
                   });
+                  widget.nextLevelCallback(level);
                 },
                 level: level + 1),
           ] else if (userAnswer == null) ...[

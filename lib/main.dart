@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       routes: AppRoutes.define(),
-      title: 'Demo',
+      title: 'Poland Quiz',
       home: const OpeningView(),
     );
   }

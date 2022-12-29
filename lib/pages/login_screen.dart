@@ -22,7 +22,7 @@ class _LoginState extends State<Login> {
 
     final logo = Image.asset(
       'assets/logo.png',
-      height: mq.size.height / 4,
+      height: mq.size.height / 3,
     );
 
     final emailField = TextFormField(
@@ -34,7 +34,7 @@ class _LoginState extends State<Login> {
       ),
       decoration: const InputDecoration(
         hintText: 'something@example.com',
-        labelText: 'email',
+        labelText: 'Email',
         hintStyle: TextStyle(
           color: Colors.grey,
         ),
@@ -46,12 +46,13 @@ class _LoginState extends State<Login> {
         TextFormField(
           enabled: isSubmitting,
           controller: _passwordController,
+          obscureText: true,
           style: const TextStyle(
             color: Colors.black,
           ),
           decoration: const InputDecoration(
             hintText: 'password',
-            labelText: 'password',
+            labelText: 'Password',
             hintStyle: TextStyle(
               color: Colors.grey,
             ),
@@ -111,7 +112,8 @@ class _LoginState extends State<Login> {
 
             if (user != null) {
               if (!mounted) return;
-              Navigator.of(context).pushNamed(AppRoutes.homePage);
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                  AppRoutes.homePage, (route) => false);
             }
           } catch (e) {
             print(e);
@@ -134,7 +136,8 @@ class _LoginState extends State<Login> {
             const Text('Not a member?'),
             MaterialButton(
               onPressed: () {
-                Navigator.of(context).pushNamed(AppRoutes.authRegister);
+                Navigator.of(context)
+                    .pushReplacementNamed(AppRoutes.authRegister);
               },
               child: const Text('Sign up'),
             ),

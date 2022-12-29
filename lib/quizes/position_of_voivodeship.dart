@@ -12,13 +12,16 @@ class PositionOfVoivodeship extends StatefulWidget {
   final InfoJson info;
   final int initalHp;
   final int level;
+  final Function(int) nextLevelCallback;
 
-  const PositionOfVoivodeship(
-      {super.key,
-      required this.data,
-      required this.info,
-      required this.initalHp,
-      required this.level});
+  const PositionOfVoivodeship({
+    super.key,
+    required this.data,
+    required this.info,
+    required this.initalHp,
+    required this.level,
+    required this.nextLevelCallback,
+  });
 
   @override
   State<PositionOfVoivodeship> createState() => _PositionOfVoivodeshipState();
@@ -122,6 +125,7 @@ class _PositionOfVoivodeshipState extends State<PositionOfVoivodeship> {
                     level++;
                     questionsCount = level * questionsPerLevel;
                   });
+                  widget.nextLevelCallback(level);
                 },
                 level: level + 1),
           ] else if (!answerConfirmed) ...[

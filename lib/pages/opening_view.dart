@@ -10,7 +10,7 @@ class OpeningView extends StatelessWidget {
 
     final logo = Image.asset(
       'assets/logo.png',
-      height: mq.size.height / 4,
+      height: mq.size.height / 3,
     );
 
     final loginButton = Material(

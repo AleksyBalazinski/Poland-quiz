@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:poland_quiz/routes.dart';
 
@@ -24,7 +25,7 @@ class _RegisterState extends State<Register> {
 
     final logo = Image.asset(
       'assets/logo.png',
-      height: mq.size.height / 4,
+      height: mq.size.height / 3,
     );
 
     final usernameField = TextFormField(
@@ -61,6 +62,7 @@ class _RegisterState extends State<Register> {
     final passwordField = TextFormField(
       enabled: isSubmitting,
       controller: _passwordController,
+      obscureText: true,
       style: const TextStyle(
         color: Colors.black,
       ),
@@ -76,6 +78,7 @@ class _RegisterState extends State<Register> {
     final repasswordField = TextFormField(
       enabled: isSubmitting,
       controller: _repasswordController,
+      obscureText: true,
       style: const TextStyle(
         color: Colors.black,
       ),
@@ -118,6 +121,10 @@ class _RegisterState extends State<Register> {
           ),
         ),
         onPressed: () async {
+          if (_repasswordController.text != _passwordController.text) {
+            print('Passwords are not the same');
+            return;
+          }
           try {
             var user =
                 (await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -127,9 +134,18 @@ class _RegisterState extends State<Register> {
                     .user;
 
             if (user != null) {
-              // TODO add user data to db
               if (!mounted) return;
-              Navigator.of(context).pushNamed(AppRoutes.homePage);
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                  AppRoutes.homePage, (route) => false);
+              var usersCollection =
+                  FirebaseFirestore.instance.collection('Users');
+              String userId = FirebaseAuth.instance.currentUser!.uid.toString();
+              usersCollection.doc(userId).set({
+                "user-name": _usernameController.text,
+                "user-id": userId,
+                "pos-of-voivodeship-lvl": 1,
+                "voivodeship-on-map-lvl": 1,
+              });
             }
           } catch (e) {
             _usernameController.text = "";
@@ -156,7 +172,7 @@ class _RegisterState extends State<Register> {
             const Text('Already have an account?'),
             MaterialButton(
               onPressed: () {
-                Navigator.of(context).pushNamed(AppRoutes.authLogin);
+                Navigator.of(context).pushReplacementNamed(AppRoutes.authLogin);
               },
               child: const Text('Login'),
             ),
