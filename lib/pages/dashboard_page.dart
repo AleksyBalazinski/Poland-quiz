@@ -21,6 +21,8 @@ class _DashboardPageState extends State<DashboardPage>
 
   @override
   Widget build(BuildContext context) {
+    final mq = MediaQuery.of(context);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Dashboard'),
@@ -36,86 +38,108 @@ class _DashboardPageState extends State<DashboardPage>
             ],
           ),
           SizedBox(
-            height: 200,
+            height: mq.size.height / 2,
             child: TabBarView(
               controller: _controller,
-              children: [
-                Center(
-                  child: Container(
-                    alignment: Alignment.center,
-                    margin: const EdgeInsets.all(20),
-                    decoration: getDecoration(),
-                    child: StreamBuilder<QuerySnapshot>(
-                      stream: FirebaseFirestore.instance
-                          .collection('Users')
-                          .orderBy("pos-of-voivodeship-lvl")
-                          .limit(15)
-                          .snapshots(),
-                      builder: (context, snapshot) {
-                        if (!snapshot.hasData) {
-                          return const Center(
-                            child: CircularProgressIndicator(),
-                          );
-                        } else {
-                          return ListView(
-                            children: snapshot.data!.docs.map((doc) {
-                              return Card(
-                                child: ListTile(
-                                  title: Text(
-                                    doc.get('user-name') as String,
-                                  ),
-                                  trailing: Text(
-                                    'level ${doc.get('pos-of-voivodeship-lvl')}',
-                                  ),
-                                ),
-                              );
-                            }).toList(),
-                          );
-                        }
-                      },
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    alignment: Alignment.center,
-                    margin: const EdgeInsets.all(20),
-                    decoration: getDecoration(),
-                    child: StreamBuilder<QuerySnapshot>(
-                      stream: FirebaseFirestore.instance
-                          .collection('Users')
-                          .orderBy("voivodeship-on-map-lvl")
-                          .limit(15)
-                          .snapshots(),
-                      builder: (context, snapshot) {
-                        if (!snapshot.hasData) {
-                          return const Center(
-                            child: CircularProgressIndicator(),
-                          );
-                        } else {
-                          return ListView(
-                            children: snapshot.data!.docs.map((doc) {
-                              return Card(
-                                child: ListTile(
-                                  title: Text(
-                                    doc.get('user-name') as String,
-                                  ),
-                                  trailing: Text(
-                                    'level ${doc.get('voivodeship-on-map-lvl')}',
-                                  ),
-                                ),
-                              );
-                            }).toList(),
-                          );
-                        }
-                      },
-                    ),
-                  ),
-                ),
+              children: const [
+                PositionOfVoivodeshipLeaderboard(),
+                VoivodeshipOnMapLeaderboard(),
               ],
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class VoivodeshipOnMapLeaderboard extends StatelessWidget {
+  const VoivodeshipOnMapLeaderboard({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        alignment: Alignment.center,
+        margin: const EdgeInsets.all(20),
+        decoration: getDecoration(),
+        child: StreamBuilder<QuerySnapshot>(
+          stream: FirebaseFirestore.instance
+              .collection('Users')
+              .orderBy("voivodeship-on-map-lvl", descending: true)
+              .limit(15)
+              .snapshots(),
+          builder: (context, snapshot) {
+            if (!snapshot.hasData) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            } else {
+              return ListView(
+                children: snapshot.data!.docs.map((doc) {
+                  return Card(
+                    child: ListTile(
+                      title: Text(
+                        doc.get('user-name') as String,
+                      ),
+                      trailing: Text(
+                        'level ${doc.get('voivodeship-on-map-lvl')}',
+                      ),
+                    ),
+                  );
+                }).toList(),
+              );
+            }
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class PositionOfVoivodeshipLeaderboard extends StatelessWidget {
+  const PositionOfVoivodeshipLeaderboard({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        alignment: Alignment.center,
+        margin: const EdgeInsets.all(20),
+        decoration: getDecoration(),
+        child: StreamBuilder<QuerySnapshot>(
+          stream: FirebaseFirestore.instance
+              .collection('Users')
+              .orderBy("pos-of-voivodeship-lvl", descending: true)
+              .limit(15)
+              .snapshots(),
+          builder: (context, snapshot) {
+            if (!snapshot.hasData) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            } else {
+              return ListView(
+                children: snapshot.data!.docs.map((doc) {
+                  return Card(
+                    child: ListTile(
+                      title: Text(
+                        doc.get('user-name') as String,
+                      ),
+                      trailing: Text(
+                        'level ${doc.get('pos-of-voivodeship-lvl')}',
+                      ),
+                    ),
+                  );
+                }).toList(),
+              );
+            }
+          },
+        ),
       ),
     );
   }

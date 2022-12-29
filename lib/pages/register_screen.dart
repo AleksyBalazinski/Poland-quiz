@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:poland_quiz/firebase_err.dart';
 import 'package:poland_quiz/routes.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -122,7 +123,8 @@ class _RegisterState extends State<Register> {
         ),
         onPressed: () async {
           if (_repasswordController.text != _passwordController.text) {
-            print('Passwords are not the same');
+            showAlertDialog(context, 'Register error',
+                'Passwords are not the same! Make sure to type the password correctly.');
             return;
           }
           try {
@@ -147,12 +149,12 @@ class _RegisterState extends State<Register> {
                 "voivodeship-on-map-lvl": 1,
               });
             }
-          } catch (e) {
+          } on FirebaseAuthException catch (e) {
             _usernameController.text = "";
             _passwordController.text = "";
             _repasswordController.text = "";
             _emailController.text = "";
-            print(e);
+            showAlertDialog(context, 'Login error', getMessageFromErrorCode(e));
           }
         },
       ),

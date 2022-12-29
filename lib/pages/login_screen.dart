@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:poland_quiz/routes.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:poland_quiz/firebase_err.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -115,8 +116,10 @@ class _LoginState extends State<Login> {
               Navigator.of(context).pushNamedAndRemoveUntil(
                   AppRoutes.homePage, (route) => false);
             }
-          } catch (e) {
-            print(e);
+          } on FirebaseAuthException catch (e) {
+            _emailController.text = '';
+            _passwordController.text = '';
+            showAlertDialog(context, 'Login error', getMessageFromErrorCode(e));
           }
         },
       ),
