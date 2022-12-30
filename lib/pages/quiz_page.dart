@@ -40,9 +40,11 @@ class QuizPage extends StatelessWidget {
               positionOfVoivodeshipLevel: positionOfVoivodeshipLevel,
               voivodeshipOnMapLevel: voivodeshipOnMapLevel,
             );
+          } else {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
           }
-
-          return const Text('loading...');
         },
       ),
     );
@@ -79,9 +81,12 @@ class _QuizesState extends State<Quizes> {
   }
 
   void updatePositionOfVoivodeshipLevel(int level) {
-    setState(() {
-      _positionOfVoivodeshipLevel = level;
-    });
+    if (mounted) {
+      setState(() {
+        _positionOfVoivodeshipLevel = level;
+      });
+    }
+
     String userId = FirebaseAuth.instance.currentUser!.uid.toString();
     var usersCollection = FirebaseFirestore.instance.collection('Users');
     usersCollection.doc(userId).update({
@@ -90,9 +95,12 @@ class _QuizesState extends State<Quizes> {
   }
 
   void updateVoivodeshipOnMapLevel(int level) {
-    setState(() {
-      _voivodeshipOnMapLevel = level;
-    });
+    if (mounted) {
+      setState(() {
+        _voivodeshipOnMapLevel = level;
+      });
+    }
+
     String userId = FirebaseAuth.instance.currentUser!.uid.toString();
     var usersCollection = FirebaseFirestore.instance.collection('Users');
     usersCollection.doc(userId).update({

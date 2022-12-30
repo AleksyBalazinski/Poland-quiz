@@ -15,7 +15,6 @@ class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  bool isSubmitting = true; // TODO
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +26,6 @@ class _LoginState extends State<Login> {
     );
 
     final emailField = TextFormField(
-      enabled: isSubmitting,
       controller: _emailController,
       keyboardType: TextInputType.emailAddress,
       style: const TextStyle(
@@ -45,7 +43,6 @@ class _LoginState extends State<Login> {
     final passwordField = Column(
       children: [
         TextFormField(
-          enabled: isSubmitting,
           controller: _passwordController,
           obscureText: true,
           style: const TextStyle(
