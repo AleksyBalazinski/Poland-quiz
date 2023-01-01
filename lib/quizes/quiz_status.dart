@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:poland_quiz/decoration.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class QuizStatus extends StatelessWidget {
   const QuizStatus({
     Key? key,
@@ -25,11 +27,12 @@ class QuizStatus extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Text(
-            'Points: $_pointsCount / ${_level * 3}',
+            AppLocalizations.of(context)!
+                .pointsCounter(_pointsCount, _level * 3),
             style: const TextStyle(fontSize: 20),
           ),
           Text(
-            'Level: $_level',
+            AppLocalizations.of(context)!.level(_level),
             style: const TextStyle(fontSize: 20),
           ),
           Row(

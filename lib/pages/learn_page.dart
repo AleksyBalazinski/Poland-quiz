@@ -4,6 +4,8 @@ import 'package:poland_quiz/infojson.dart';
 import 'package:poland_quiz/poland_map.dart';
 import 'package:poland_quiz/info_box.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class LearnPage extends StatelessWidget {
   const LearnPage({super.key, required this.geoJson, required this.infoJson});
   final GeoJson geoJson;
@@ -13,7 +15,7 @@ class LearnPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Learn page'),
+        title: Text(AppLocalizations.of(context)!.learning),
       ),
       body: LearnMap(data: geoJson, info: infoJson),
     );

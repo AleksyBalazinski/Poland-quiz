@@ -1,0 +1,65 @@
+{
+    "@@locale": "pl",
+
+    "area": "Powierzchnia: {quantity} km kw.",
+
+    "population": "Ludność: {quantity}",
+
+    "voivodeSeat": "Siedziba wojewody: {seat}",
+
+    "sejmikSeat": "Siedziba sejmiku: {seat}",
+
+    "touchTheMap": "Dotknij mapy, aby wyświetlić informacje o wybranym województwie",
+
+    "appTitle": "Quiz o Polsce",
+
+    "level": "poziom {level}",
+
+    "whereIsVoivodeship": "Gdzie jest województwo {expectedAnswer}?",
+
+    "dashboard": "Statystyki",
+
+    "posOfVoivodeship": "Wskaż województwo",
+
+    "voivodeshipOnMap": "Województwo na mapie",
+
+    "learning": "Nauka",
+
+    "quiz": "Quiz",
+
+    "login": "Zaloguj się",
+
+    "register": "Zarejestruj się",
+
+    "password": "Hasło",
+
+    "exampleUser": "Jan Nowak",
+
+    "gameOver": "Przegrałeś",
+
+    "wrongAns": "Zła odpowiedź",
+
+    "pointsCounter": "Punkty: {pointsCnt} / {total}",
+
+    "confirm": "Zatwierdź",
+
+    "cont": "dalej",
+
+    "correctAns": "Poprawna odpowiedź",
+
+    "tryAgain": "spróbuj ponownie",
+
+    "unlockedLevel": "Odblokowano poziom {level}!",
+
+    "quizSelectionPage": "Wybór quizu",
+
+    "notAMember": "Nie posiadasz konta?",
+
+    "signUp": "Zarejestruj się",
+
+    "alreadyHaveAnAccount": "Masz już konto?",
+
+    "username": "Nazwa użytkownika",
+
+    "reenterPass": "Potwierdź hasło"
+}

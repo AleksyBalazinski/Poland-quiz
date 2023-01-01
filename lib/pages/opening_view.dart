@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:poland_quiz/routes.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class OpeningView extends StatelessWidget {
   const OpeningView({super.key});
 
@@ -20,10 +22,10 @@ class OpeningView extends StatelessWidget {
       child: MaterialButton(
         minWidth: mq.size.width / 1.2,
         padding: const EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
-        child: const Text(
-          'Login',
+        child: Text(
+          AppLocalizations.of(context)!.login,
           textAlign: TextAlign.center,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 20.0,
             color: Colors.black,
             fontWeight: FontWeight.bold,
@@ -42,10 +44,10 @@ class OpeningView extends StatelessWidget {
       child: MaterialButton(
         minWidth: mq.size.width / 1.2,
         padding: const EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
-        child: const Text(
-          'Register',
+        child: Text(
+          AppLocalizations.of(context)!.register,
           textAlign: TextAlign.center,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 20.0,
             color: Colors.black,
             fontWeight: FontWeight.bold,

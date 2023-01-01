@@ -5,6 +5,8 @@ import 'package:poland_quiz/routes.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class Register extends StatefulWidget {
   const Register({super.key});
 
@@ -35,10 +37,10 @@ class _RegisterState extends State<Register> {
       style: const TextStyle(
         color: Colors.black,
       ),
-      decoration: const InputDecoration(
-        hintText: 'John Doe',
-        labelText: 'username',
-        hintStyle: TextStyle(
+      decoration: InputDecoration(
+        hintText: AppLocalizations.of(context)!.exampleUser,
+        labelText: AppLocalizations.of(context)!.username,
+        hintStyle: const TextStyle(
           color: Colors.grey,
         ),
       ),
@@ -53,7 +55,7 @@ class _RegisterState extends State<Register> {
       ),
       decoration: const InputDecoration(
         hintText: 'something@example.com',
-        labelText: 'email',
+        labelText: 'Email',
         hintStyle: TextStyle(
           color: Colors.grey,
         ),
@@ -67,10 +69,10 @@ class _RegisterState extends State<Register> {
       style: const TextStyle(
         color: Colors.black,
       ),
-      decoration: const InputDecoration(
+      decoration: InputDecoration(
         hintText: 'password',
-        labelText: 'password',
-        hintStyle: TextStyle(
+        labelText: AppLocalizations.of(context)!.password,
+        hintStyle: const TextStyle(
           color: Colors.grey,
         ),
       ),
@@ -83,10 +85,10 @@ class _RegisterState extends State<Register> {
       style: const TextStyle(
         color: Colors.black,
       ),
-      decoration: const InputDecoration(
+      decoration: InputDecoration(
         hintText: 'password',
-        labelText: 'Re-enter password',
-        hintStyle: TextStyle(
+        labelText: AppLocalizations.of(context)!.reenterPass,
+        hintStyle: const TextStyle(
           color: Colors.grey,
         ),
       ),
@@ -112,10 +114,10 @@ class _RegisterState extends State<Register> {
       child: MaterialButton(
         minWidth: mq.size.width / 1.2,
         padding: const EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
-        child: const Text(
-          'Register',
+        child: Text(
+          AppLocalizations.of(context)!.register,
           textAlign: TextAlign.center,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 20.0,
             color: Colors.black,
             fontWeight: FontWeight.bold,
@@ -171,12 +173,12 @@ class _RegisterState extends State<Register> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text('Already have an account?'),
+            Text(AppLocalizations.of(context)!.alreadyHaveAnAccount),
             MaterialButton(
               onPressed: () {
                 Navigator.of(context).pushReplacementNamed(AppRoutes.authLogin);
               },
-              child: const Text('Login'),
+              child: Text(AppLocalizations.of(context)!.login),
             ),
           ],
         )

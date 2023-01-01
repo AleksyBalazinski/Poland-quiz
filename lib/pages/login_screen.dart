@@ -4,6 +4,8 @@ import 'package:poland_quiz/routes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:poland_quiz/firebase_err.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class Login extends StatefulWidget {
   const Login({super.key});
 
@@ -48,10 +50,10 @@ class _LoginState extends State<Login> {
           style: const TextStyle(
             color: Colors.black,
           ),
-          decoration: const InputDecoration(
+          decoration: InputDecoration(
             hintText: 'password',
-            labelText: 'Password',
-            hintStyle: TextStyle(
+            labelText: AppLocalizations.of(context)!.password,
+            hintStyle: const TextStyle(
               color: Colors.grey,
             ),
           ),
@@ -91,10 +93,10 @@ class _LoginState extends State<Login> {
       child: MaterialButton(
         minWidth: mq.size.width / 1.2,
         padding: const EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
-        child: const Text(
-          'Login',
+        child: Text(
+          AppLocalizations.of(context)!.login,
           textAlign: TextAlign.center,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 20.0,
             color: Colors.black,
             fontWeight: FontWeight.bold,
@@ -133,13 +135,13 @@ class _LoginState extends State<Login> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text('Not a member?'),
+            Text(AppLocalizations.of(context)!.notAMember),
             MaterialButton(
               onPressed: () {
                 Navigator.of(context)
                     .pushReplacementNamed(AppRoutes.authRegister);
               },
-              child: const Text('Sign up'),
+              child: Text(AppLocalizations.of(context)!.signUp),
             ),
           ],
         )

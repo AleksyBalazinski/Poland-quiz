@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:poland_quiz/decoration.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
 
@@ -25,16 +27,16 @@ class _DashboardPageState extends State<DashboardPage>
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Dashboard'),
+        title: Text(AppLocalizations.of(context)!.dashboard),
       ),
       body: Column(
         children: [
           TabBar(
             controller: _controller,
             labelColor: Colors.black,
-            tabs: const [
-              Tab(text: 'Position of voivodeship'),
-              Tab(text: 'Voivodeship on map'),
+            tabs: [
+              Tab(text: AppLocalizations.of(context)!.posOfVoivodeship),
+              Tab(text: AppLocalizations.of(context)!.voivodeshipOnMap),
             ],
           ),
           SizedBox(
@@ -85,7 +87,8 @@ class VoivodeshipOnMapLeaderboard extends StatelessWidget {
                         doc.get('user-name') as String,
                       ),
                       trailing: Text(
-                        'level ${doc.get('voivodeship-on-map-lvl')}',
+                        AppLocalizations.of(context)!
+                            .level(doc.get('voivodeship-on-map-lvl')),
                       ),
                     ),
                   );
@@ -131,7 +134,8 @@ class PositionOfVoivodeshipLeaderboard extends StatelessWidget {
                         doc.get('user-name') as String,
                       ),
                       trailing: Text(
-                        'level ${doc.get('pos-of-voivodeship-lvl')}',
+                        AppLocalizations.of(context)!
+                            .level(doc.get('pos-of-voivodeship-lvl')),
                       ),
                     ),
                   );

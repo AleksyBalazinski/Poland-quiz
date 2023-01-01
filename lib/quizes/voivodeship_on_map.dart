@@ -7,6 +7,8 @@ import 'package:poland_quiz/poland_map.dart';
 import 'package:poland_quiz/quizes/feedback.dart';
 import 'package:poland_quiz/quizes/quiz_status.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class VoivodeshipOnMapQuiz extends StatefulWidget {
   final GeoJson data;
   final InfoJson info;
@@ -102,7 +104,7 @@ class _VoivodeshipOnMapQuizState extends State<VoivodeshipOnMapQuiz> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Voivodeship on the map'),
+        title: Text(AppLocalizations.of(context)!.voivodeshipOnMap),
         centerTitle: true,
         leading: InkWell(
           onTap: () => Navigator.pop(context),

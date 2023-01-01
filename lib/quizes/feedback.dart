@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:poland_quiz/decoration.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class GameOverInfo extends StatelessWidget {
   const GameOverInfo({super.key, required this.onPressed});
   final Function() onPressed;
@@ -14,13 +16,13 @@ class GameOverInfo extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            const Text(
-              'Game over!',
-              style: TextStyle(fontSize: 20),
+            Text(
+              AppLocalizations.of(context)!.gameOver,
+              style: const TextStyle(fontSize: 20),
             ),
             ElevatedButton(
               onPressed: onPressed,
-              child: const Text('try again'),
+              child: Text(AppLocalizations.of(context)!.tryAgain),
             ),
           ],
         ),
@@ -51,13 +53,13 @@ class WrongAnswerInfo extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            const Text(
-              'Wrong answer',
-              style: TextStyle(fontSize: 20),
+            Text(
+              AppLocalizations.of(context)!.wrongAns,
+              style: const TextStyle(fontSize: 20),
             ),
             ElevatedButton(
               onPressed: onPressed,
-              child: const Text('continue'),
+              child: Text(AppLocalizations.of(context)!.cont),
             ),
           ],
         ),
@@ -79,10 +81,10 @@ class CorrectAnswerInfo extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            const Text('Correct answer'),
+            Text(AppLocalizations.of(context)!.correctAns),
             ElevatedButton(
               onPressed: onPressed,
-              child: const Text('continue'),
+              child: Text(AppLocalizations.of(context)!.cont),
             ),
           ],
         ),
@@ -106,10 +108,10 @@ class NextLevelInfo extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text('Unlocked level $level!'),
+            Text(AppLocalizations.of(context)!.unlockedLevel(level)),
             ElevatedButton(
               onPressed: onPressed,
-              child: const Text('continue'),
+              child: Text(AppLocalizations.of(context)!.cont),
             ),
           ],
         ),

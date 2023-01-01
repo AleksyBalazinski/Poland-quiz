@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:poland_quiz/pages/opening_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:poland_quiz/routes.dart';
 import 'firebase_options.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 Future<void> main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,6 +22,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       routes: AppRoutes.define(),
       title: 'Poland Quiz',
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en'),
+        Locale('pl'),
+      ],
       home: const OpeningView(),
     );
   }

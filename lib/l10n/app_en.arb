@@ -1,0 +1,160 @@
+{
+    "@@locale": "en",
+
+    "area": "Area: {quantity} km sq",
+    "@area": {
+        "description": "Describes area of a region in kilometers squared",
+        "placeholders": {
+            "quantity": {
+                "type": "int",
+                "format": "compactLong",
+                "example": "1 million"
+            }
+        }
+    },
+
+    "population": "Population: {quantity}",
+    "@population": {
+        "description":  "Describes population of a region",
+        "placeholders": {
+            "quantity": {
+                "type": "int",
+                "format": "compactLong",
+                "example": "1 million"
+            }
+        }
+    },
+
+    "voivodeSeat": "Voivode seat: {seat}",
+    "@voivodeSeat": {
+        "description": "Names the voivode seat",
+        "placeholders": {
+            "seat": {
+                "type": "String",
+                "example": "Łódź"
+            }
+        }
+    },
+
+    "sejmikSeat": "Sejmik seat: {seat}",
+    "@sejmikSeat": {
+        "description": "Names the sejmik seat",
+        "placeholders": {
+            "seat": {
+                "type": "String",
+                "example": "Łódź"
+            }
+        }
+    },
+    
+    "touchTheMap": "Touch the map to display information about the selected voivodeship",
+    "@touchTheMap": {},
+
+    "appTitle": "Poland Quiz",
+    "@appTitle": {},
+
+    "level": "level {level}",
+    "@level": {
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+
+    "whereIsVoivodeship": "Where is {expectedAnswer} voivodeship?",
+    "@whereIsVoivodeship": {
+        "placeholders": {
+            "expectedAnswer": {
+                "type": "String"
+            }
+        }
+    },
+
+    "dashboard": "Dashboard",
+    "@dashboard": {},
+
+    "posOfVoivodeship": "Position of voivodeship",
+    "@posOfVoivodeship": {},
+
+    "voivodeshipOnMap": "Voivodeship on map",
+    "@voivodeshipOnMap": {},
+
+    "learning": "Learning",
+    "@learning": {},
+
+    "quiz": "Quiz",
+    "@quiz": {},
+
+    "login": "Login",
+    "@login": {},
+
+    "register": "Register",
+    "@register": {},
+
+    "password": "Password",
+    "@password": {},
+
+    "exampleUser": "John Doe",
+    "@exampleUser": {},
+
+    "gameOver": "Game over",
+    "@gameOver": {},
+
+    "wrongAns": "Wrong answer",
+    "@wrongAns": {},
+
+    "pointsCounter": "Points: {pointsCnt} / {total}",
+    "@pointsCounter": {
+        "placeholders": {
+            "pointsCnt": {
+                "type": "int",
+                "format": "decimalPattern"
+            },
+            "total": {
+                "type": "int",
+                "format": "decimalPattern"
+            }
+        }
+    },
+
+    "confirm": "Confirm",
+    "@confirm": {},
+
+    "cont": "continue",
+    "@cont": {},
+
+    "correctAns": "Correct answer",
+    "@correctAns": {},
+
+    "tryAgain": "try again",
+    "@tryAgain": {},
+
+    "unlockedLevel": "Unlocked level {level}!",
+    "@unlockedLevel": {
+        "placeholders": {
+            "level": {
+                "type": "int",
+                "format": "decimalPattern"
+            }
+        }
+    },
+
+    "quizSelectionPage": "Quiz selection",
+    "@quizSelectionPage": {},
+
+    "notAMember": "Not a member?",
+    "@notAMember": {},
+
+    "signUp": "Sign up",
+    "@signUp": {},
+
+    "alreadyHaveAnAccount": "Already have an account?",
+    "@alreadyHaveAnAccount": {},
+
+    "username": "Username",
+    "@username": {},
+
+    "reenterPass": "Re-enter password",
+    "@reenterPass": {}
+}

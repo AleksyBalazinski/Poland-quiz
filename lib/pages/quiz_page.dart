@@ -7,6 +7,8 @@ import 'package:poland_quiz/quizes/position_of_voivodeship.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class QuizPage extends StatelessWidget {
   final GeoJson geoJson;
   final InfoJson infoJson;
@@ -18,7 +20,7 @@ class QuizPage extends StatelessWidget {
     String userId = FirebaseAuth.instance.currentUser!.uid.toString();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Quiz selection page'),
+        title: Text(AppLocalizations.of(context)!.quizSelectionPage),
       ),
       body: FutureBuilder<DocumentSnapshot>(
         future: usersCollection.doc(userId).get(),
@@ -119,7 +121,7 @@ class _QuizesState extends State<Quizes> {
               '$_voivodeshipOnMapLevel',
             ),
           ),
-          title: const Text('Voivodeship on the map'),
+          title: Text(AppLocalizations.of(context)!.voivodeshipOnMap),
           onTap: () {
             Navigator.of(context).push(
               MaterialPageRoute(
@@ -142,7 +144,7 @@ class _QuizesState extends State<Quizes> {
               '$_positionOfVoivodeshipLevel',
             ),
           ),
-          title: const Text('Position of the voivodeship'),
+          title: Text(AppLocalizations.of(context)!.posOfVoivodeship),
           onTap: () {
             Navigator.of(context).push(
               MaterialPageRoute(

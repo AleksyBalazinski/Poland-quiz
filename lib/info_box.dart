@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:poland_quiz/decoration.dart';
 import 'package:poland_quiz/infojson.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class InfoBox extends StatelessWidget {
   final String selected;
   final InfoJson info;
@@ -28,13 +30,13 @@ class InfoBox extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Text(getArea(info, selected),
+              Text(getArea(context, info, selected),
                   style: const TextStyle(fontSize: 20)),
-              Text(getPopulation(info, selected),
+              Text(getPopulation(context, info, selected),
                   style: const TextStyle(fontSize: 20)),
-              Text(getVoivodeSeat(info, selected),
+              Text(getVoivodeSeat(context, info, selected),
                   style: const TextStyle(fontSize: 20)),
-              Text(getSejmikSeat(info, selected),
+              Text(getSejmikSeat(context, info, selected),
                   style: const TextStyle(fontSize: 20)),
             ],
           )
@@ -44,33 +46,24 @@ class InfoBox extends StatelessWidget {
   }
 }
 
-String getArea(InfoJson info, String voivodeship) {
+String getArea(BuildContext context, InfoJson info, String voivodeship) {
   var area = info.voivodeships[voivodeship.toLowerCase()]!.areaKmSq;
-  String unit = "thousand kmSq";
-  return "Area: ${area ~/ 1000} $unit";
+  return AppLocalizations.of(context)!.area(area);
 }
 
-String getPopulation(InfoJson info, String voivodeship) {
-  double population =
-      info.voivodeships[voivodeship.toLowerCase()]!.populationK.toDouble();
-  String unit;
-  if (population > 1000) {
-    unit = "million";
-    population /= 1000;
-  } else {
-    unit = "thousand";
-  }
-  return "Population: ${population.toStringAsFixed(2)} $unit";
+String getPopulation(BuildContext context, InfoJson info, String voivodeship) {
+  int population = info.voivodeships[voivodeship.toLowerCase()]!.populationK;
+  return AppLocalizations.of(context)!.population(population);
 }
 
-String getSejmikSeat(InfoJson info, String voivodeship) {
+String getSejmikSeat(BuildContext context, InfoJson info, String voivodeship) {
   var sejmikSeat = info.voivodeships[voivodeship.toLowerCase()]!.sejmikSeat;
-  return "Sejmik seat: $sejmikSeat";
+  return AppLocalizations.of(context)!.sejmikSeat(sejmikSeat);
 }
 
-String getVoivodeSeat(InfoJson info, String voivodeship) {
+String getVoivodeSeat(BuildContext context, InfoJson info, String voivodeship) {
   var voivodeSeat = info.voivodeships[voivodeship.toLowerCase()]!.voivodeSeat;
-  return "Voivode seat: $voivodeSeat";
+  return AppLocalizations.of(context)!.voivodeSeat(voivodeSeat);
 }
 
 class EmptyInfoBox extends StatelessWidget {
@@ -83,10 +76,10 @@ class EmptyInfoBox extends StatelessWidget {
       alignment: Alignment.center,
       margin: const EdgeInsets.all(margin),
       decoration: getDecoration(),
-      child: const Center(
+      child: Center(
         child: Text(
-          'Touch the map to display information about the selected voivodeship',
-          style: TextStyle(fontSize: 15),
+          AppLocalizations.of(context)!.touchTheMap,
+          style: const TextStyle(fontSize: 15),
         ),
       ),
     );

@@ -32,6 +32,9 @@ dependencies:
   flutter:
     sdk: flutter
   proj4dart: any
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.17.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -69,6 +72,8 @@ flutter:
     - assets/test/test_info.json
     - assets/pol_info.json
     - assets/logo.png
+  
+  generate: true
 
   # To add assets to your application, add an assets section, like this:
   # assets:

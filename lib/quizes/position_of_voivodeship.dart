@@ -7,6 +7,8 @@ import 'package:poland_quiz/poland_map.dart';
 import 'package:poland_quiz/quizes/feedback.dart';
 import 'package:poland_quiz/quizes/quiz_status.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class PositionOfVoivodeship extends StatefulWidget {
   final GeoJson data;
   final InfoJson info;
@@ -94,7 +96,7 @@ class _PositionOfVoivodeshipState extends State<PositionOfVoivodeship> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Position of the voivodeship'),
+        title: Text(AppLocalizations.of(context)!.posOfVoivodeship),
         leading: InkWell(
           onTap: () => Navigator.pop(context),
           child: const Icon(Icons.arrow_back_ios),
@@ -103,7 +105,9 @@ class _PositionOfVoivodeshipState extends State<PositionOfVoivodeship> {
       body: Column(
         children: [
           QuizStatus(pointsCount: _pointsCount, level: level, hp: _hp),
-          Text('Where is $expectedAnswer voivodeship?'),
+          Text(
+            AppLocalizations.of(context)!.whereIsVoivodeship(expectedAnswer),
+          ),
           PolandMap(
             key: _key,
             data: widget.data,
@@ -112,7 +116,7 @@ class _PositionOfVoivodeshipState extends State<PositionOfVoivodeship> {
           ElevatedButton(
             onPressed:
                 userAnswer == null || answerConfirmed ? null : _checkAnswer,
-            child: const Text('Confirm'),
+            child: Text(AppLocalizations.of(context)!.confirm),
           ),
           if (_hp == 0) ...[
             GameOverInfo(onPressed: _restart),

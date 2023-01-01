@@ -5,6 +5,8 @@ import 'package:poland_quiz/pages/quiz_page.dart';
 import 'package:poland_quiz/geojson.dart';
 import 'package:poland_quiz/infojson.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -68,22 +70,22 @@ class _HomePageState extends State<HomePage> {
         unselectedItemColor: Colors.grey,
         currentIndex: _selectedIndex,
         showUnselectedLabels: false,
-        items: const [
+        items: [
           BottomNavigationBarItem(
-              icon: Icon(
+              icon: const Icon(
                 Icons.home,
               ),
-              label: 'Dashboard'),
+              label: AppLocalizations.of(context)!.dashboard),
           BottomNavigationBarItem(
-              icon: Icon(
+              icon: const Icon(
                 Icons.school,
               ),
-              label: 'Learning'),
+              label: AppLocalizations.of(context)!.learning),
           BottomNavigationBarItem(
-              icon: Icon(
+              icon: const Icon(
                 Icons.question_mark,
               ),
-              label: 'Quiz'),
+              label: AppLocalizations.of(context)!.quiz),
         ],
       ),
     );
