@@ -20,15 +20,22 @@ class InfoBox extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Center(
-            child: Text(
-              selected,
-              style: const TextStyle(fontSize: 25),
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Image(
+                image: getFlag(context, info, selected),
+                height: 50,
+              ),
+              Text(
+                selected,
+                style: const TextStyle(fontSize: 25),
+              ),
+            ],
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(getArea(context, info, selected),
                   style: const TextStyle(fontSize: 20)),
@@ -64,6 +71,12 @@ String getSejmikSeat(BuildContext context, InfoJson info, String voivodeship) {
 String getVoivodeSeat(BuildContext context, InfoJson info, String voivodeship) {
   var voivodeSeat = info.voivodeships[voivodeship.toLowerCase()]!.voivodeSeat;
   return AppLocalizations.of(context)!.voivodeSeat(voivodeSeat);
+}
+
+AssetImage getFlag(BuildContext context, InfoJson info, String voivodeship) {
+  String path =
+      'assets/flags/${info.voivodeships[voivodeship.toLowerCase()]!.flagPath}';
+  return AssetImage(path);
 }
 
 class EmptyInfoBox extends StatelessWidget {

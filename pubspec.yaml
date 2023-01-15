@@ -73,6 +73,7 @@ flutter:
     - assets/test/test_info.json
     - assets/pol_info.json
     - assets/logo.png
+    - assets/flags/
   
   generate: true
 

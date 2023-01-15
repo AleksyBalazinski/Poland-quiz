@@ -13,6 +13,7 @@ void main() async {
     expect(voivodeships['test1']!.sejmikSeat, "CapitalS");
     expect(voivodeships['test1']!.otherCities,
         equals(["Other City 11", "Other City 12"]));
+    expect(voivodeships['test1']!.flagPath, "test1_flag.png");
   });
   test('region test2', () {
     expect(voivodeships['test2']!.areaKmSq, 321);
@@ -21,6 +22,7 @@ void main() async {
     expect(voivodeships['test2']!.sejmikSeat, "Capital2");
     expect(voivodeships['test2']!.otherCities,
         equals(["Other City 21", "Other City 22"]));
+    expect(voivodeships['test2']!.flagPath, "test2_flag.png");
   });
   test('region test3', () {
     expect(voivodeships['test3']!.areaKmSq, 0);
@@ -28,5 +30,6 @@ void main() async {
     expect(voivodeships['test3']!.voivodeSeat, "Capital3");
     expect(voivodeships['test3']!.sejmikSeat, "Capital3");
     expect(voivodeships['test3']!.otherCities, equals([]));
+    expect(voivodeships['test3']!.flagPath, "test3_flag.png");
   });
 }

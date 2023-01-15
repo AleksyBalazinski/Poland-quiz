@@ -7,6 +7,7 @@ class VoivodeshipInfo {
   final String voivodeSeat;
   final String sejmikSeat;
   final List<String> otherCities;
+  final String flagPath;
 
   const VoivodeshipInfo({
     required this.areaKmSq,
@@ -14,6 +15,7 @@ class VoivodeshipInfo {
     required this.voivodeSeat,
     required this.sejmikSeat,
     required this.otherCities,
+    required this.flagPath,
   });
 
   factory VoivodeshipInfo.fromJson(Map<String, dynamic> json) {
@@ -24,6 +26,7 @@ class VoivodeshipInfo {
       sejmikSeat: json['sejmik_seat'],
       otherCities:
           (json['other_cities'] as List).map((e) => e.toString()).toList(),
+      flagPath: json['flag_path'],
     );
   }
 }

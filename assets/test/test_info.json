@@ -7,7 +7,8 @@
         "other_cities": [
             "Other City 11",
             "Other City 12"
-        ]
+        ],
+        "flag_path": "test1_flag.png"
     },
     "test2": {
         "area": 321,
@@ -17,13 +18,15 @@
         "other_cities": [
             "Other City 21",
             "Other City 22"
-        ]
+        ],
+        "flag_path": "test2_flag.png"
     },
     "test3": {
         "area": 0,
         "population": 0,
         "voivode_seat": "Capital3",
         "sejmik_seat": "Capital3",
-        "other_cities": []
+        "other_cities": [],
+        "flag_path": "test3_flag.png"
     }
 }

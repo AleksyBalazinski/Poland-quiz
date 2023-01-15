@@ -4,111 +4,127 @@
         "population": 2898,
         "voivode_seat": "Wrocław",
         "sejmik_seat": "Wrocław",
-        "other_cities": []
+        "other_cities": [],
+        "flag_path": "POL_województwo_dolnośląskie_flag.png"
     },
     "kujawsko-pomorskie": {
         "area": 17972,
         "population": 2069,
         "voivode_seat": "Bydgoszcz",
         "sejmik_seat": "Toruń",
-        "other_cities": []
+        "other_cities": [],
+        "flag_path": "POL_województwo_kujawsko-pomorskie_flag.png"
     },
     "lubelskie": {
         "area": 25122,
         "population": 2103,
         "voivode_seat": "Lublin",
         "sejmik_seat": "Lublin",
-        "other_cities": []
+        "other_cities": [],
+        "flag_path": "POL_województwo_lubelskie_flag.png"
     },
     "lubuskie": {
         "area": 13988,
         "population": 1010,
         "voivode_seat": "Gorzów Wielkopolski",
         "sejmik_seat": "Zielona Góra",
-        "other_cities": []
+        "other_cities": [],
+        "flag_path": "POL_województwo_lubuskie_flag.png"
     },
     "łódzkie": {
         "area": 18219,
         "population": 2448,
         "voivode_seat": "Łódź",
         "sejmik_seat": "Łódź",
-        "other_cities": []
+        "other_cities": [],
+        "flag_path": "POL_województwo_łódzkie_flag.png"
     },
     "małopolskie": {
         "area": 15183,
         "population": 3413,
         "voivode_seat": "Kraków",
         "sejmik_seat": "Kraków",
-        "other_cities": []
+        "other_cities": [],
+        "flag_path": "POL_województwo_małopolskie_flag.png"
     },
     "mazowieckie": {
         "area": 35558,
         "population": 5428,
         "voivode_seat": "Warszawa",
         "sejmik_seat": "Warszawa",
-        "other_cities": []
+        "other_cities": [],
+        "flag_path": "POL_województwo_mazowieckie_flag.png"
     },
     "opolskie": {
         "area": 9412,
         "population": 980,
         "voivode_seat": "Opole",
         "sejmik_seat": "Opole",
-        "other_cities": []
+        "other_cities": [],
+        "flag_path": "POL_województwo_opolskie_flag.png"
     },
     "podkarpackie": {
         "area": 17846,
         "population": 2125,
         "voivode_seat": "Rzeszów",
         "sejmik_seat": "Rzeszów",
-        "other_cities": []
+        "other_cities": [],
+        "flag_path": "POL_województwo_podkarpackie_flag.png"
     },
     "podlaskie": {
         "area": 20187,
         "population": 1176,
         "voivode_seat": "Białystok",
         "sejmik_seat": "Białystok",
-        "other_cities": []
+        "other_cities": [],
+        "flag_path": "POL_województwo_podlaskie_flag.png"
     },
     "pomorskie": {
         "area": 18321,
         "population": 2346,
         "voivode_seat": "Gdańsk",
         "sejmik_seat": "Gdańsk",
-        "other_cities": []
+        "other_cities": [],
+        "flag_path": "POL_województwo_pomorskie_flag.png"
     },
     "śląskie": {
         "area": 12333,
         "population": 4508,
         "voivode_seat": "Katowice",
         "sejmik_seat": "Katowice",
-        "other_cities": []
+        "other_cities": [],
+        "flag_path": "POL_województwo_śląskie_flag.png"
     },
     "świętokrzyskie": {
         "area": 11711,
         "population": 1230,
         "voivode_seat": "Kielce",
         "sejmik_seat": "Kielce",
-        "other_cities": []
+        "other_cities": [],
+        "flag_path": "POL_województwo_świętokrzyskie_flag.png"
     },
     "warmińsko-mazurskie": {
         "area": 24173,
         "population": 1420,
         "voivode_seat": "Olsztyn",
         "sejmik_seat": "Olsztyn",
-        "other_cities": []
+        "other_cities": [],
+        "flag_path": "POL_województwo_warmińsko-mazurskie_flag.png"
     },
     "wielkopolskie": {
         "area": 29826,
         "population": 3500,
         "voivode_seat": "Poznań",
         "sejmik_seat": "Poznań",
-        "other_cities": []
+        "other_cities": [],
+        "flag_path": "POL_województwo_wielkopolskie_flag.png"
     },
     "zachodniopomorskie": {
         "area": 22897,
         "population": 1693,
         "voivode_seat": "Szczecin",
         "sejmik_seat": "Szczecin",
-        "other_cities": []
+        "other_cities": [],
+        "flag_path": "POL_województwo_zachodniopomorskie_flag.png"
     }
 }
