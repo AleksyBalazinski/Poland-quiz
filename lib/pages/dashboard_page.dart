@@ -53,23 +53,26 @@ class _DashboardPageState extends State<DashboardPage>
             child: Container(
               margin: const EdgeInsets.all(20),
               decoration: getDecoration(color: Colors.blue.shade200),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  const Icon(
-                    Icons.emoji_events_outlined,
-                    color: Colors.amber,
-                    size: 60,
-                  ),
-                  const SizedBox(width: 20),
-                  Flexible(
-                    child: Text(
-                      AppLocalizations.of(context)!.proTip,
-                      style: const TextStyle(
-                          fontSize: 20, fontStyle: FontStyle.italic),
+              child: Padding(
+                padding: const EdgeInsets.all(10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    const Icon(
+                      Icons.emoji_events_outlined,
+                      color: Colors.amber,
+                      size: 60,
                     ),
-                  ),
-                ],
+                    const SizedBox(width: 20),
+                    Flexible(
+                      child: Text(
+                        AppLocalizations.of(context)!.proTip,
+                        style: const TextStyle(
+                            fontSize: 20, fontStyle: FontStyle.italic),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           )

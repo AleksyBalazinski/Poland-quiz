@@ -27,9 +27,11 @@ class InfoBox extends StatelessWidget {
                 image: getFlag(context, info, selected),
                 height: 50,
               ),
-              Text(
-                selected,
-                style: const TextStyle(fontSize: 25),
+              Flexible(
+                child: Text(
+                  selected,
+                  style: const TextStyle(fontSize: 25),
+                ),
               ),
             ],
           ),
