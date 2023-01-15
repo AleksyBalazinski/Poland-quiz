@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:poland_quiz/geojson.dart';
 import 'package:poland_quiz/infojson.dart';
@@ -40,6 +41,7 @@ class _PositionOfVoivodeshipState extends State<PositionOfVoivodeship> {
   late int questionsCount;
   final int questionsPerLevel = 3;
   late int level;
+  late ConfettiController _confettiController;
 
   final GlobalKey<PolandMapState> _key = GlobalKey();
 
@@ -55,6 +57,9 @@ class _PositionOfVoivodeshipState extends State<PositionOfVoivodeship> {
     });
     if (userAnswer?.toLowerCase() == expectedAnswer.toLowerCase()) {
       setState(() => _pointsCount++);
+      if (_pointsCount == questionsCount) {
+        _confettiController.play();
+      }
     } else {
       setState(() => _hp--);
     }
@@ -89,7 +94,15 @@ class _PositionOfVoivodeshipState extends State<PositionOfVoivodeship> {
     voivodeships = widget.info.voivodeships.keys.toList();
     level = widget.level;
     questionsCount = widget.level * questionsPerLevel;
+    _confettiController =
+        ConfettiController(duration: const Duration(seconds: 3));
     _advanceToNextQuestion();
+  }
+
+  @override
+  void dispose() {
+    _confettiController.dispose();
+    super.dispose();
   }
 
   @override
@@ -139,7 +152,19 @@ class _PositionOfVoivodeshipState extends State<PositionOfVoivodeship> {
             CorrectAnswerInfo(onPressed: _advanceToNextQuestion),
           ] else ...[
             WrongAnswerInfo(onPressed: _advanceToNextQuestion),
-          ]
+          ],
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: ConfettiWidget(
+              confettiController: _confettiController,
+              blastDirection: -pi / 2,
+              maxBlastForce: 50,
+              minBlastForce: 20,
+              emissionFrequency: 0.05,
+              numberOfParticles: 20,
+              gravity: 0.5,
+            ),
+          ),
         ],
       ),
     );

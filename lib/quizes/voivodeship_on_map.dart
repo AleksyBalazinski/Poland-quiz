@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:poland_quiz/geojson.dart';
 import 'package:poland_quiz/infojson.dart';
@@ -42,6 +43,7 @@ class _VoivodeshipOnMapQuizState extends State<VoivodeshipOnMapQuiz> {
   late int questionsCount;
   final int questionsPerLevel = 3;
   late int level;
+  late ConfettiController _confettiController;
 
   void _setSelectedVoivodeship(String selected) {
     // no op
@@ -50,6 +52,9 @@ class _VoivodeshipOnMapQuizState extends State<VoivodeshipOnMapQuiz> {
   void _checkAnswer() {
     if (userAnswer == expectedAnswer) {
       setState(() => _pointsCount++);
+      if (_pointsCount == questionsCount) {
+        _confettiController.play();
+      }
     } else {
       setState(() => _hp--);
     }
@@ -97,7 +102,15 @@ class _VoivodeshipOnMapQuizState extends State<VoivodeshipOnMapQuiz> {
     level = widget.level;
     questionsCount = widget.level * questionsPerLevel;
     voivodeships = widget.info.voivodeships.keys.toList();
+    _confettiController =
+        ConfettiController(duration: const Duration(seconds: 3));
     _advanceToNextQuestion();
+  }
+
+  @override
+  void dispose() {
+    _confettiController.dispose();
+    super.dispose();
   }
 
   @override
@@ -158,7 +171,19 @@ class _VoivodeshipOnMapQuizState extends State<VoivodeshipOnMapQuiz> {
             CorrectAnswerInfo(onPressed: _advanceToNextQuestion),
           ] else ...[
             WrongAnswerInfo(onPressed: _advanceToNextQuestion),
-          ]
+          ],
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: ConfettiWidget(
+              confettiController: _confettiController,
+              blastDirection: -pi / 2,
+              maxBlastForce: 50,
+              minBlastForce: 20,
+              emissionFrequency: 0.05,
+              numberOfParticles: 20,
+              gravity: 0.5,
+            ),
+          ),
         ],
       ),
     );
