@@ -61,17 +61,6 @@ class _LoginState extends State<Login> {
         const Padding(
           padding: EdgeInsets.all(2.0),
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            MaterialButton(
-              onPressed: () {
-                // TODO fogot password popup
-              },
-              child: const Text("Forgot password"),
-            )
-          ],
-        ),
       ],
     );
 

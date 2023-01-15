@@ -77,9 +77,12 @@ class EmptyInfoBox extends StatelessWidget {
       margin: const EdgeInsets.all(margin),
       decoration: getDecoration(),
       child: Center(
-        child: Text(
-          AppLocalizations.of(context)!.touchTheMap,
-          style: const TextStyle(fontSize: 15),
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Text(
+            AppLocalizations.of(context)!.touchTheMap,
+            style: const TextStyle(fontSize: 15),
+          ),
         ),
       ),
     );

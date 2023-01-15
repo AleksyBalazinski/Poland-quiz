@@ -20,7 +20,6 @@ class _RegisterState extends State<Register> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _repasswordController = TextEditingController();
-  bool isSubmitting = true; // TODO
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +31,7 @@ class _RegisterState extends State<Register> {
     );
 
     final usernameField = TextFormField(
-      enabled: isSubmitting,
+      enabled: true,
       controller: _usernameController,
       style: const TextStyle(
         color: Colors.black,
@@ -47,7 +46,7 @@ class _RegisterState extends State<Register> {
     );
 
     final emailField = TextFormField(
-      enabled: isSubmitting,
+      enabled: true,
       controller: _emailController,
       keyboardType: TextInputType.emailAddress,
       style: const TextStyle(
@@ -63,7 +62,7 @@ class _RegisterState extends State<Register> {
     );
 
     final passwordField = TextFormField(
-      enabled: isSubmitting,
+      enabled: true,
       controller: _passwordController,
       obscureText: true,
       style: const TextStyle(
@@ -79,7 +78,7 @@ class _RegisterState extends State<Register> {
     );
 
     final repasswordField = TextFormField(
-      enabled: isSubmitting,
+      enabled: true,
       controller: _repasswordController,
       obscureText: true,
       style: const TextStyle(

@@ -156,5 +156,8 @@
     "@username": {},
 
     "reenterPass": "Re-enter password",
-    "@reenterPass": {}
+    "@reenterPass": {},
+
+    "proTip": "The most effective strategy to find yourself on top of this list is to learn every day!",
+    "@proTip": {}
 }

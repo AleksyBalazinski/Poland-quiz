@@ -12,7 +12,7 @@ class GameOverInfo extends StatelessWidget {
     return Expanded(
       child: Container(
         margin: const EdgeInsets.all(20),
-        decoration: getDecoration(color: Colors.redAccent),
+        decoration: getDecoration(color: Colors.redAccent[100]),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -49,7 +49,7 @@ class WrongAnswerInfo extends StatelessWidget {
     return Expanded(
       child: Container(
         margin: const EdgeInsets.all(20),
-        decoration: getDecoration(color: Colors.redAccent),
+        decoration: getDecoration(color: Colors.redAccent[100]),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
