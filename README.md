@@ -40,10 +40,10 @@ Error message is displayed if the user tries to authorize with the app in offlin
     ...
 } 
 ```
-## Details
+## Implementation details
 The map of voivodeships was downloaded as GeoJSON file from 
 [GADM website](https://gadm.org/).
 The amount of detail this map provides by default is overwhelming from the performance perspective, and thankfully completely excessive for our needs.
 The map was simplified using the Visvalingam weighted area algorithm implemented [here](https://mapshaper.org/).<br>
-The coordinates in GeoJSON format are given in WGS84 coordinate system and thus a conversion into EPSG:3857 (which is the standard "wall-map" projection most users are used to) was necessary (this is where proj4dart package came in useful).
-
+The coordinates in GeoJSON format are given in WGS84 coordinate system and thus a conversion into EPSG:3857 (which is the standard "wall-map" projection most users are used to) was necessary (this is where [proj4dart](https://pub.dev/packages/proj4dart) package came in useful).<br>
+Information about voivodeships was taken from [this Wikipedia page](https://pl.wikipedia.org/wiki/Podzia%C5%82_administracyjny_Polski#Dane_statystyczne).
