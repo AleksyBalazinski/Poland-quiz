@@ -2,7 +2,8 @@
 ## Project description
 Poland Quiz in an educational application for learning about Poland's voivodeships.
 ### Learning
-User can study Poland's geography by selecting regions on an interactive map. Information associated with each voivodeship includes its:
+User can study Poland's geography by selecting regions on an interactive map.
+Information associated with each voivodeship includes its:
 * area,
 * population,
 * voivode seat,
@@ -20,7 +21,8 @@ To add an aspect of competition, the information about 15 users with best scores
 * Signing in process: before opening the app, the user has to sign in (Firebase authentication).
 * Internationalization: the app is available in two languages: English and Polish (depending on system settings).
 * Custom painting: map of Poland is implemented using custom painting.
-* Offline support: internet connection is necessary to log in. After that, the app can work in offline mode since Firestore supports offline data persistence (although this is not a pleasant experience)
+* Offline support: the app can work in offline mode thanks to Firestore's support for offline data persistence.
+Error message is displayed if the user tries to authorize with the app in offline mode (because they are using the app for the first time or have signed out deliberately).
 
 ## Test account
 * username: test_usr
@@ -40,6 +42,8 @@ To add an aspect of competition, the information about 15 users with best scores
 ```
 ## Details
 The map of voivodeships was downloaded as GeoJSON file from 
-[GADM website](https://gadm.org/). The amount of detail this map provides by default is overwhelming from the performance perspective, and thankfully completely excessive for our needs. The map was simplified using the Visvalingam weighted area algorithm implemented [here](https://mapshaper.org/).
+[GADM website](https://gadm.org/).
+The amount of detail this map provides by default is overwhelming from the performance perspective, and thankfully completely excessive for our needs.
+The map was simplified using the Visvalingam weighted area algorithm implemented [here](https://mapshaper.org/).<br>
 The coordinates in GeoJSON format are given in WGS84 coordinate system and thus a conversion into EPSG:3857 (which is the standard "wall-map" projection most users are used to) was necessary (this is where proj4dart package came in useful).
 

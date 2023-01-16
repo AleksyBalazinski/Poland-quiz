@@ -22,16 +22,14 @@ class QuizPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.quizSelectionPage),
       ),
-      body: FutureBuilder<DocumentSnapshot>(
-        future: usersCollection.doc(userId).get(),
+      body: StreamBuilder<DocumentSnapshot>(
+        stream: usersCollection.doc(userId).snapshots(),
         builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return const Text('Something went wrong');
-          }
-          if (snapshot.hasData && !snapshot.data!.exists) {
-            return const Text('Document does not exist');
-          }
-          if (snapshot.connectionState == ConnectionState.done) {
+          if (!snapshot.hasData) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          } else {
             Map<String, dynamic> data =
                 snapshot.data!.data() as Map<String, dynamic>;
             int positionOfVoivodeshipLevel = data['pos-of-voivodeship-lvl'];
@@ -41,10 +39,6 @@ class QuizPage extends StatelessWidget {
               infoJson: infoJson,
               positionOfVoivodeshipLevel: positionOfVoivodeshipLevel,
               voivodeshipOnMapLevel: voivodeshipOnMapLevel,
-            );
-          } else {
-            return const Center(
-              child: CircularProgressIndicator(),
             );
           }
         },
