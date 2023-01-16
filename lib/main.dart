@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:poland_quiz/pages/home_page.dart';
 import 'package:poland_quiz/pages/opening_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:poland_quiz/routes.dart';
@@ -32,7 +34,9 @@ class MyApp extends StatelessWidget {
         Locale('en'),
         Locale('pl'),
       ],
-      home: const OpeningView(),
+      home: FirebaseAuth.instance.currentUser == null
+          ? const OpeningView()
+          : const HomePage(),
     );
   }
 }

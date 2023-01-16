@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:poland_quiz/decoration.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:poland_quiz/pages/opening_view.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
@@ -28,6 +29,16 @@ class _DashboardPageState extends State<DashboardPage>
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.dashboard),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(
+                        builder: (context) => const OpeningView()),
+                    (route) => false);
+              },
+              icon: const Icon(Icons.logout))
+        ],
       ),
       body: Column(
         children: [
@@ -39,43 +50,43 @@ class _DashboardPageState extends State<DashboardPage>
               Tab(text: AppLocalizations.of(context)!.voivodeshipOnMap),
             ],
           ),
-          SizedBox(
-            height: mq.size.height / 2,
-            child: TabBarView(
-              controller: _controller,
-              children: const [
-                PositionOfVoivodeshipLeaderboard(),
-                VoivodeshipOnMapLeaderboard(),
-              ],
-            ),
-          ),
           Expanded(
-            child: Container(
-              margin: const EdgeInsets.all(20),
-              decoration: getDecoration(color: Colors.blue.shade200),
-              child: Padding(
-                padding: const EdgeInsets.all(10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    const Icon(
-                      Icons.emoji_events_outlined,
-                      color: Colors.amber,
-                      size: 60,
-                    ),
-                    const SizedBox(width: 20),
-                    Flexible(
-                      child: Text(
-                        AppLocalizations.of(context)!.proTip,
-                        style: const TextStyle(
-                            fontSize: 20, fontStyle: FontStyle.italic),
-                      ),
-                    ),
-                  ],
-                ),
+            child: SizedBox(
+              height: mq.size.height / 2,
+              child: TabBarView(
+                controller: _controller,
+                children: const [
+                  PositionOfVoivodeshipLeaderboard(),
+                  VoivodeshipOnMapLeaderboard(),
+                ],
               ),
             ),
-          )
+          ),
+          Container(
+            margin: const EdgeInsets.all(20),
+            decoration: getDecoration(color: Colors.blue.shade200),
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  const Icon(
+                    Icons.emoji_events_outlined,
+                    color: Colors.amber,
+                    size: 60,
+                  ),
+                  const SizedBox(width: 20),
+                  Flexible(
+                    child: Text(
+                      AppLocalizations.of(context)!.proTip,
+                      style: const TextStyle(
+                          fontSize: 20, fontStyle: FontStyle.italic),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
