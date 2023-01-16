@@ -125,6 +125,8 @@ class _PositionOfVoivodeshipState extends State<PositionOfVoivodeship> {
             key: _key,
             data: widget.data,
             onSelection: _setSelectedVoivodeship,
+            intialSelection: answerConfirmed ? expectedAnswer : null,
+            initialSelectionColor: answerConfirmed ? Colors.green : null,
           ),
           ElevatedButton(
             onPressed:

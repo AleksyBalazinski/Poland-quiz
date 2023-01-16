@@ -22,7 +22,6 @@ String getMessageFromErrorCode(FirebaseAuthException e) {
       return "User disabled.";
 
     case "ERROR_TOO_MANY_REQUESTS":
-    case "operation-not-allowed":
       return "Too many requests to log into this account.";
 
     case "ERROR_OPERATION_NOT_ALLOWED":

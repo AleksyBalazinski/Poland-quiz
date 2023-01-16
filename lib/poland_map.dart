@@ -7,14 +7,17 @@ import 'package:poland_quiz/geojson.dart';
 import 'package:proj4dart/proj4dart.dart';
 
 class PolandMap extends StatefulWidget {
-  const PolandMap(
-      {super.key,
-      required this.data,
-      required this.onSelection,
-      this.intialSelection});
+  const PolandMap({
+    super.key,
+    required this.data,
+    required this.onSelection,
+    this.intialSelection,
+    this.initialSelectionColor,
+  });
   final GeoJson data;
   final Function(String) onSelection;
   final String? intialSelection;
+  final Color? initialSelectionColor;
 
   @override
   State<PolandMap> createState() => PolandMapState();
@@ -119,6 +122,7 @@ class PolandMapState extends State<PolandMap> {
                       ? widget.intialSelection!.toLowerCase() ==
                           properties.name1.toLowerCase()
                       : selectedVoivodeship == properties.name1,
+                  selectionColor: widget.initialSelectionColor,
                 );
               }()
           ],
@@ -134,6 +138,7 @@ class Voivodeship extends StatelessWidget {
   final Function() onTap;
   final Polygon polygon;
   final bool isSelected;
+  final Color? selectionColor;
   const Voivodeship({
     super.key,
     required this.left,
@@ -141,6 +146,7 @@ class Voivodeship extends StatelessWidget {
     required this.onTap,
     required this.polygon,
     required this.isSelected,
+    this.selectionColor,
   });
 
   @override
@@ -154,7 +160,9 @@ class Voivodeship extends StatelessWidget {
           size: const Size(double.maxFinite, double.maxFinite),
           painter: PolygonPainter(
               polygon: polygon,
-              fillColor: isSelected ? Colors.orange : Colors.blueGrey),
+              fillColor: isSelected
+                  ? (selectionColor == null ? Colors.orange : selectionColor!)
+                  : Colors.blueGrey),
         ),
       ),
     );

@@ -146,6 +146,10 @@ class _VoivodeshipOnMapQuizState extends State<VoivodeshipOnMapQuiz> {
                           _checkAnswer();
                         }
                       : null,
+                  style: (userAnswer != null && expectedAnswer == ans)
+                      ? ElevatedButton.styleFrom(
+                          disabledBackgroundColor: Colors.green)
+                      : null,
                   child: Text(ans),
                 )
             ],
