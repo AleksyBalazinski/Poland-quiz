@@ -17,7 +17,7 @@ To add an aspect of competition, the information about 15 users with best scores
 ## Optional requirements
 * Supported platforms: Android, web
 * Animations: when new level is unlocked a confetti animation is displayed ([confetti package](https://pub.dev/packages/confetti)).
-* Tests: there is one test - infojson_test.dart verifies if the JSON file containing information about voivodeships is parsed correctly.
+* Tests: tested JSON parsing
 * Signing in process: before opening the app, the user has to sign in (Firebase authentication).
 * Internationalization: the app is available in two languages: English and Polish (depending on system settings).
 * Custom painting: map of Poland is implemented using custom painting.

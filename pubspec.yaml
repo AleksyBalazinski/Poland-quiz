@@ -81,6 +81,7 @@ flutter:
   assets: 
     - assets/gadm41_POL_1.json
     - assets/test/test_info.json
+    - assets/test/test_geo.json
     - assets/pol_info.json
     - assets/logo.png
     - assets/flags/
