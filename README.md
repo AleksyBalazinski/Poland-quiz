@@ -1,6 +1,7 @@
 # Poland Quiz
 ## Project description
 Poland Quiz in an educational application for learning about Poland's voivodeships.
+![](./demo/merge1.png)
 ### Learning
 User can study Poland's geography by selecting regions on an interactive map.
 Information associated with each voivodeship includes its:
@@ -14,7 +15,7 @@ To make the learning experience more engaging, quizzes are divided into levels o
 At each level the user has 3 "health points" which get reduced by one on every wrong answer. Once the number of health points hits zero, all points collected at the current level are canceled.
 At each successive level, the number of questions increases by three.
 To add an aspect of competition, the information about 15 users with best scores is displayed on the leaderboard.
-## Optional requirements
+## Other features
 * Supported platforms: Android, web
 * Animations: when new level is unlocked a confetti animation is displayed ([confetti package](https://pub.dev/packages/confetti)).
 * Tests: tested JSON parsing
@@ -24,10 +25,6 @@ To add an aspect of competition, the information about 15 users with best scores
 * Offline support: the app can work in offline mode thanks to Firestore's support for offline data persistence.
 Error message is displayed if the user tries to authorize with the app in offline mode (because they are using the app for the first time or have signed out deliberately).
 
-## Test account
-* username: test_usr
-* email: test_usr@example.com
-* password: 123456
 ## Firestore schema
 ```
 "Users": {
